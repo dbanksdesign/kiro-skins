@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ThemeGallery from '../components/ThemeGallery.astro';
+import Header from '../components/Header.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <Header />
+  <main>
+    <h1>IDE Themes</h1>
+    <ThemeGallery />
+  </main>
 </Layout>
+
+<style>
+  h1 {
+    margin: 1rem 0;
+    font-size: 2rem;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+</style>

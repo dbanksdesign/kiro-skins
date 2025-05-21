@@ -1,0 +1,25 @@
+---
+import ThemeCard from './ThemeCard.astro';
+import { themes } from '../data/themes';
+---
+
+<div class="theme-gallery">
+  {themes.map(theme => (
+    <ThemeCard 
+      id={theme.id}
+      name={theme.name}
+      author={theme.author}
+      rating={theme.rating}
+      codePreview={theme.codePreview}
+    />
+  ))}
+</div>
+
+<style>
+  .theme-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+</style>

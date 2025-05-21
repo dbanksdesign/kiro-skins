@@ -1,0 +1,75 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  author: string;
+  rating: number;
+  codePreview: string;
+}
+
+const { id, name, author, rating, codePreview } = Astro.props;
+
+// Generate stars based on rating
+const stars = Array.from({ length: 5 }, (_, i) => i < rating);
+---
+
+<div class="theme-card">
+  <div class="code-preview">
+    <pre><code>{codePreview}</code></pre>
+  </div>
+  <div class="theme-info">
+    <h3>{name}</h3>
+    <p>by {author}</p>
+    <div class="rating">
+      {stars.map(isFilled => (
+        <span class={isFilled ? "star filled" : "star"}>★</span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .theme-card {
+    background-color: #1e1e1e;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .code-preview {
+    padding: 1rem;
+    background-color: #252526;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+  }
+  
+  .theme-info {
+    padding: 0.75rem;
+  }
+  
+  h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1rem;
+  }
+  
+  p {
+    margin: 0.25rem 0;
+    color: #cccccc;
+    font-size: 0.8rem;
+  }
+  
+  .rating {
+    margin-top: 0.25rem;
+  }
+  
+  .star {
+    color: #555555;
+  }
+  
+  .star.filled {
+    color: #ffcc00;
+  }
+</style>
